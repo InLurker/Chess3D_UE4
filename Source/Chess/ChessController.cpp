@@ -274,6 +274,8 @@ void AChessController::MakeMove() {
 		GameLog.Add(FString::FromInt(PlayerOne->getScore()) + ":" + FString::FromInt(PlayerTwo->getScore()));
 		FFileHelper::SaveStringArrayToFile(GameLog, *TextFileDirectory, FFileHelper::EEncodingOptions::ForceUTF8);
 		endGame = true;
+		GameLog.Empty();
+		TextFileDirectory = FPaths::ProjectDir() / (FString(TEXT("Content/GameplayResult/")) + FDateTime::Now().ToString() + FString(TEXT(".txt")));
 	}
 	else {
 		Deselect();
